@@ -2,9 +2,9 @@ package com.company.joshua;
 
 import com.company.joshua.generics.Person;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 public class Main {
 
@@ -13,16 +13,17 @@ public class Main {
         Person draperMan = new Person(89, "DraperMan");
         Person peggy = new Person(67, "Peggy");
 
-        List<Person> people = new ArrayList<>();
+        Set<Person> people = new HashSet<>();
+        people.add(draperMan);
         people.add(draperMan);
         people.add(peggy);
+        people.add(peggy);
 
-        people.add(new Person(34, "Test User"));
-        System.out.println("****Using normal for loop******");
-        for (int i = 0; i < people.size(); i++) {
-            System.out.println(people.get(i));
-        }
+
         System.out.println("******Using iterators*******************");
+        // Ensures unique values i.e no duplicates
+        //No defined order, else has no get()
+
         Iterator<Person> iterator = people.iterator();
         while (iterator.hasNext()) {
             Person person = iterator.next();
