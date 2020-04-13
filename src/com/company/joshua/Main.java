@@ -2,6 +2,7 @@ package com.company.joshua;
 
 import com.company.joshua.generics.AgeComparator;
 import com.company.joshua.generics.Person;
+import com.company.joshua.generics.ReverseComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +34,9 @@ public class Main {
                 return Integer.compare(person1.getAge(), person2.getAge());
             }
         });
+
+        Collections.sort(people, new ReverseComparator<>(new AgeComparator()));
+        System.out.println(people);
 
 
     }
