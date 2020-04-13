@@ -1,9 +1,12 @@
 package com.company.joshua;
 
+import com.company.joshua.generics.AgeComparator;
 import com.company.joshua.generics.Person;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Main {
 
@@ -13,31 +16,23 @@ public class Main {
         Person peggy = new Person(67, "Peggy");
         Person person = new Person(25, "Joshua");
 
+        List<Person> people = new ArrayList<>();
 
-        Map<String, Person> personMap = new HashMap<>();
-        personMap.put(draperMan.getName(), draperMan);
-        personMap.put(peggy.getName(), peggy);
-        personMap.put(person.getName(), person);
+        people.add(draperMan);
+        people.add(peggy);
+        people.add(person);
 
-        System.out.println("***********Looping though keys*********************");
-        for (String name : personMap.keySet()) {
-            System.out.println(name);
-        }
+        Collections.sort(people, new AgeComparator());
 
-        System.out.println("************************Looping though values using key**********************");
-        for (String name : personMap.keySet()) {
-            System.out.println(personMap.get(name));
-        }
+        System.out.println(people);
 
-        System.out.println("***********************Looping through values*******************************");
-        for (Person person1 : personMap.values()) {
-            System.out.println(person1);
-        }
-        System.out.println("****Accessing both key and values******************");
-        for (Map.Entry<String, Person> entry : personMap.entrySet()) {
-            System.out.println(entry.getKey());
-            System.out.println(entry.getValue());
-        }
+        System.out.println("*******Using anonymous class");
+        Collections.sort(people, new Comparator<Person>() {
+            @Override
+            public int compare(Person person1, Person person2) {
+                return Integer.compare(person1.getAge(), person2.getAge());
+            }
+        });
 
 
     }
